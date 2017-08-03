@@ -1,16 +1,25 @@
 const path = require('path')
 
-module.exports = {
+const config = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist')
-    publicPath: '/',
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
-      {test: /\.js$\},
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+
+        }
+      },
       {test: /\.css$/, use: 'css-loader'}
     ]
   }
+
 };
+
+module.exports = config;
